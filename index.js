@@ -109,18 +109,18 @@ const handleMenu = function (doc) {
 
 const handleRestaurantList = function (doc) {
 
-  let testMenu = 'https://deliveroo.co.uk/menu/london/covent-garden/wok-to-walk-west-central?day=today&postcode=W1F7EY&time=ASAP';
+  //let testMenu = 'https://deliveroo.co.uk/menu/london/covent-garden/wok-to-walk-west-central?day=today&postcode=W1F7EY&time=ASAP';
   spider.queue(testMenu, handleMenu) 
-  // doc.$('a').each(function (i, elem) {
-  //   console.log(elem.attribs.href);
-  //   elem.attribs.href.includes('/menu')? spider.queue('https://deliveroo.co.uk' + elem.attribs.href, handleMenu) : null ;
+  doc.$('a').each(function (i, elem) {
+    console.log(elem.attribs.href);
+    elem.attribs.href.includes('/menu')? spider.queue('https://deliveroo.co.uk' + elem.attribs.href, handleMenu) : null ;
 
-    //spider.queue(elem.attribs.href, handleMenu)
+    // spider.queue(elem.attribs.href, handleMenu)
     // do stuff with element
     
-  //   elem.attribs.href.indexOf('https://deliveroo.co.uk/menu') === 0 &&
-  //     spider.queue(elem.attribs.href, handleMenu)
-  // })
+    // elem.attribs.href.indexOf('https://deliveroo.co.uk/menu') === 0 &&
+    //   spider.queue(elem.attribs.href, handleMenu)
+  })
 }
 
 // start crawling
