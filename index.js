@@ -46,6 +46,8 @@ const spider = new Spider({
 const handleMenu = function (doc) {
   // console.log(doc);
   var restaurant = (function () {
+
+    let restRating = doc.$('.orderweb__61671603')[0].children[0].children[0].data;
     var restaurantName = doc.$('.restaurant__name').html()
     var restaurantTags = []
     doc.$('.restaurant__metadata-tags .tag').each((index, tagElement) => {
@@ -99,9 +101,10 @@ const handleMenu = function (doc) {
       })
     return {
       name: restaurantName,
+      rating: parseFloat(restRating),
       tags: restaurantTags,
       foodByCategory: foodCategories,
-      food: foods
+      food:  foods      
     }
   })()
   restaurants.push(restaurant)
@@ -109,12 +112,10 @@ const handleMenu = function (doc) {
 
 const handleRestaurantList = function (doc) {
 
-  //let testMenu = 'https://deliveroo.co.uk/menu/london/covent-garden/wok-to-walk-west-central?day=today&postcode=W1F7EY&time=ASAP';
-  spider.queue(testMenu, handleMenu) 
+  // let testMenu = 'https://deliveroo.co.uk/menu/london/covent-garden/wok-to-walk-west-central?day=today&postcode=W1F7EY&time=ASAP';
+  // spider.queue(testMenu, handleMenu) 
   doc.$('a').each(function (i, elem) {
-    console.log(elem.attribs.href);
     elem.attribs.href.includes('/menu')? spider.queue('https://deliveroo.co.uk' + elem.attribs.href, handleMenu) : null ;
-
     // spider.queue(elem.attribs.href, handleMenu)
     // do stuff with element
     
