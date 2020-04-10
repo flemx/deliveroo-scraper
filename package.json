@@ -1,0 +1,15 @@
+{
+  "name": "deliveroo-scraper",
+  "version": "1.0.0",
+  "description": "Deliveroo Scraper",
+  "main": "index.js",
+  "dependencies": {
+    "node-spider": "^1.4.1"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "scripts": {
+    "start": "POST_CODE=W1F7EY node index.js"
+  }
+}
